@@ -23,22 +23,19 @@ public class GestaoGraficoImpl implements GestaoGrafico {
 	@Inject
 	GraficoDao graficoDao;
 	
-	@Override
-	public List<Grafico> porNome(Grafico grafico) {
-		List<Grafico> listaGrafico = graficoDao.porNome(grafico);
-		return listaGrafico;
-	}
-
-	@Override
 	public List<String> obtemNomeGraficos() {
 		List<String> listaGraficos = graficoDao.obtemNomeGraficos();
 		return listaGraficos;
 	}
 
-	@Override
 	public Grafico porCodigo(Integer codigo) {
 		Grafico grafico = graficoDao.porCodigo(codigo);
 		return grafico;
+	}
+
+	public List<Grafico> porNome(Grafico grafico) {
+		List<Grafico> listaGrafico = graficoDao.porNome(grafico);
+		return null;
 	}
 
 }

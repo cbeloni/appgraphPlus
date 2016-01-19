@@ -29,8 +29,8 @@ public class ServletConfig implements ServletContextListener {
 												     protected void configureServlets() {
 														bind(GraficoDao.class).to(GraficoDaoImpl.class); 
 										         		bind(UsuarioDao.class).to(UsuarioDaoImpl.class); 
-										         		bind(GestaoUsuario.class).to(GestaoUsuarioImpl.class).in(Singleton.class); 
-										         		bind(GestaoGrafico.class).to(GestaoGraficoImpl.class).in(Singleton.class);
+										         		//bind(GestaoUsuario.class).to(GestaoUsuarioImpl.class).in(Singleton.class); 
+										         		//bind(GestaoGrafico.class).to(GestaoGraficoImpl.class).in(Singleton.class);
 												     }
 		                                         });
 		ServletContext servletContext = servletContextEvent.getServletContext();

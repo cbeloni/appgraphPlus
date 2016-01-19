@@ -7,10 +7,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import com.appgraph.model.Usuario;
-import com.appgraph.service.GestaoUsuario;
-import com.appgraph.servlet.ServletConfig;
-import com.appgraph.view.NavigationBean;
-import com.google.inject.Inject;
+import com.appgraph.service.impl.GestaoUsuarioImpl;
 
 
 @ManagedBean
@@ -23,8 +20,8 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 
 	private boolean logado;
 	
-	@Inject
-	GestaoUsuario gestaoUsuario;
+	//@Inject
+	//GestaoUsuario gestaoUsuario;
 	
 //	@Inject
 //	public void setGestaoUsuario(GestaoUsuario gestaoUsuario) {
@@ -47,7 +44,8 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 	
 	@SuppressWarnings("unchecked")
 	public String autenticar(){	
-        //FIXME
+		GestaoUsuarioImpl gestaoUsuario = new GestaoUsuarioImpl(this.usuario);
+		
 		if (gestaoUsuario.existeUsuario(usuario) && !isLogado()) {
 			setLogado(true);
 			this.usuario = gestaoUsuario.ObtemUsuario();
