@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.appgraph.model.Usuario;
 import com.appgraph.service.impl.GestaoUsuarioImpl;
+import com.appgraph.util.FacesUtil;
 
 
 @ManagedBean
@@ -44,11 +45,11 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 	
 	@SuppressWarnings("unchecked")
 	public String autenticar(){	
-		GestaoUsuarioImpl gestaoUsuario = new GestaoUsuarioImpl(this.usuario);
+		GestaoUsuarioImpl gestaoUsuario = new GestaoUsuarioImpl();
 		
-		if (gestaoUsuario.existeUsuario(usuario) && !isLogado()) {
+		if (gestaoUsuario.existeUsuario(this.usuario) && !isLogado()) {
 			setLogado(true);
-			this.usuario = gestaoUsuario.ObtemUsuario();
+			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);
 			
 			System.out.println("Logado");	
 			return navigationBean.IrParaConsultaGrafico();
@@ -66,6 +67,7 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 	public void sair(){
 		if (isLogado())  {
 			setLogado(false);
+			FacesUtil.InvalidateSession();
 			System.out.println("Logout com sucesso!");
 		}
 	}

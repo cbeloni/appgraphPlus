@@ -26,12 +26,6 @@ public class GraficoDaoImpl implements GraficoDao {
 				.getSessionAttribute("usuarioAutenticacaoBean");
 		ConsultaGraficoBean consultaGraficoBean = (ConsultaGraficoBean) FacesUtil
 				.getSessionAttribute("consultaGraficoBean");
-		if (consultaGraficoBean == null) {
-			System.out.println("consultaGraficoBean null");
-		} else {
-			System.out.println("consultaGraficoBean not null");
-		}
-
 		Usuario usuario = usuarioAutenticacaoBean.getUsuario();
 		@SuppressWarnings("unchecked")
 		List<Grafico> graficos = (List<Grafico>) session.createCriteria(Grafico.class)

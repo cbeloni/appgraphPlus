@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import com.appgraph.service.GestaoGrafico;
+import com.appgraph.service.impl.GestaoGraficoImpl;
 import com.appgraph.view.NavigationBean;
 import com.google.inject.Inject;
 
@@ -17,8 +18,8 @@ import com.google.inject.Inject;
 @SessionScoped
 public class ConsultaGraficoBean implements Serializable {
 
-	@Inject
-	GestaoGrafico gg;
+	//@Inject
+	GestaoGrafico gg = new GestaoGraficoImpl();
 	
 	private static final long serialVersionUID = 1L;
 	

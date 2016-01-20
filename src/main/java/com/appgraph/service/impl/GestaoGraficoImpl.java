@@ -9,6 +9,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.appgraph.dao.GraficoDao;
+import com.appgraph.dao.impl.GraficoDaoImpl;
 import com.appgraph.model.Grafico;
 import com.appgraph.model.Usuario;
 import com.appgraph.service.GestaoGrafico;
@@ -20,8 +21,8 @@ import com.google.inject.Inject;
 
 public class GestaoGraficoImpl implements GestaoGrafico {
 
-	@Inject
-	GraficoDao graficoDao;
+	//@Inject
+	GraficoDao graficoDao = new GraficoDaoImpl();
 	
 	public List<String> obtemNomeGraficos() {
 		List<String> listaGraficos = graficoDao.obtemNomeGraficos();
@@ -35,7 +36,7 @@ public class GestaoGraficoImpl implements GestaoGrafico {
 
 	public List<Grafico> porNome(Grafico grafico) {
 		List<Grafico> listaGrafico = graficoDao.porNome(grafico);
-		return null;
+		return listaGrafico;
 	}
 
 }

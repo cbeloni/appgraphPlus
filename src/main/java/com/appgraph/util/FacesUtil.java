@@ -29,5 +29,9 @@ public class FacesUtil {
 	public static Object getSessionAttribute(String nome) {			
 		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(nome);
 	}
+	
+	public static void InvalidateSession() {	
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	}
 }
 

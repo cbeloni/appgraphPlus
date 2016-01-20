@@ -13,14 +13,15 @@ import org.primefaces.model.chart.ChartSeries;
 
 import com.appgraph.model.Grafico;
 import com.appgraph.service.GestaoGrafico;
+import com.appgraph.service.impl.GestaoGraficoImpl;
 import com.google.inject.Inject;
 
 @SuppressWarnings("serial")
 @ManagedBean
 public class GraficoBean implements Serializable {
 
-	@Inject
-	GestaoGrafico gg;
+	//@Inject
+	GestaoGrafico gg = new GestaoGraficoImpl();
 
 	private BarChartModel barModel;
 	private int max_eixo_y = 0;
