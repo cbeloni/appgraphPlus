@@ -6,10 +6,11 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<!-- <property name="hibernate.connection.url">jdbc:mysql://127.4.14.130/appjava4</property>
-		<property name="hibernate.connection.username">adminxfZXP5g</property>
-		<property name="hibernate.connection.password">IflQMrg_Aipp</property> -->
-
+		<!--
+		<property name="hibernate.connection.url">jdbc:mysql://127.9.34.130/appjava8</property>
+		<property name="hibernate.connection.username">adminQELTTyg</property>
+		<property name="hibernate.connection.password">jRVL-sNSTtcY</property> 
+		-->
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/appgraph</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>

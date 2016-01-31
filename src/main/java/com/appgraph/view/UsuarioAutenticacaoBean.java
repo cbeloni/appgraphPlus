@@ -49,27 +49,23 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 		
 		if (gestaoUsuario.existeUsuario(this.usuario) && !isLogado()) {
 			setLogado(true);
-			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);
-			
-			System.out.println("Logado");	
+			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);			
 			return navigationBean.IrParaConsultaGrafico();
 		} else if (isLogado()) {
-			System.out.println("Já estava logado");
 			return navigationBean.IrParaConsultaGrafico();
 		}		
 		else {
-			System.out.println("Nao Logado");
 			return navigationBean.IrParaIndex();
 		}							
 		
 	}
 	
-	public void sair(){
+	public String sair(){
 		if (isLogado())  {
 			setLogado(false);
-			FacesUtil.InvalidateSession();
-			System.out.println("Logout com sucesso!");
+			FacesUtil.InvalidateSession();			
 		}
+		return navigationBean.IrParaIndex();
 	}
 
 	public boolean isLogado() {
