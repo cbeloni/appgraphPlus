@@ -31,7 +31,6 @@ public class ConsultaGraficoBean implements Serializable {
 	private NavigationBean navigationBean;
 	
 	public String abrirGrafico (){
-		System.out.println(nomeGraficoSelecionado);
 		return navigationBean.IrParaGrafico();
 	}
 	public String getNomeGraficoSelecionado() {

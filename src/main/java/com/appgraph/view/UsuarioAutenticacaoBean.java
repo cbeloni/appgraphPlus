@@ -21,14 +21,6 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 
 	private boolean logado;
 	
-	//@Inject
-	//GestaoUsuario gestaoUsuario;
-	
-//	@Inject
-//	public void setGestaoUsuario(GestaoUsuario gestaoUsuario) {
-//		this.gestaoUsuario = gestaoUsuario;
-//	}
-	
 	@ManagedProperty(value="#{navigationBean}")
 	private NavigationBean navigationBean;
 	
@@ -43,13 +35,17 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 		return usuario;
 	}
 	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public String autenticar(){	
 		GestaoUsuarioImpl gestaoUsuario = new GestaoUsuarioImpl();
 		
 		if (gestaoUsuario.existeUsuario(this.usuario) && !isLogado()) {
 			setLogado(true);
-			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);			
+			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);				
 			return navigationBean.IrParaConsultaGrafico();
 		} else if (isLogado()) {
 			return navigationBean.IrParaConsultaGrafico();

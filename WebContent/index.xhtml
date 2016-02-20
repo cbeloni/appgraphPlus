@@ -7,7 +7,7 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title><ui:insert name="titulo">Appgraph</ui:insert></title>
-		
+		<h:outputStylesheet library="css" name="sistema.css"/>
 	</h:head>
 	<h:body>
 		<div id="header">
@@ -16,8 +16,12 @@
 			</ui:insert>
 		</div>
 		
-		<div id="content">
+		<div id="content" align="center">
 			<ui:insert name="conteudo" />
+		</div>
+		
+		<div id="content" align="center">
+			<ui:insert name="grafico" />
 		</div>
 		
 		<div id="footer">

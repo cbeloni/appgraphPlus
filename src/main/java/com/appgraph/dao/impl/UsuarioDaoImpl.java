@@ -11,6 +11,7 @@ import com.appgraph.util.HibernateUtil;
 public class UsuarioDaoImpl implements UsuarioDao{
 
 	public boolean existeUsuario (Usuario usuario) {
+		
 		Session session = HibernateUtil.getSession();	
 		Long count = (Long) session.createCriteria(Usuario.class)
 						  .add(Restrictions.eq("usuario", usuario.getUsuario()))
