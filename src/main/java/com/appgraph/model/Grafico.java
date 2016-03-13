@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.google.gson.Gson;
+
 @XmlRootElement
 @Entity
 @Table(name="grafico")
@@ -59,6 +61,10 @@ public class Grafico implements Serializable{
 	}
 	public void setSerie(String serie) {
 		this.serie = serie;
+	}
+	
+	public String toJSON(){
+		return new Gson().toJson(this);
 	}
 
 	@Override

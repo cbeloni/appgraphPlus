@@ -17,7 +17,7 @@ import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
 
-public class ServletConfig implements ServletContextListener {
+public class ServletConfig  implements ServletContextListener { 
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
 		ServletContext servletContext = servletContextEvent.getServletContext();
 		servletContext.removeAttribute(Injector.class.getName());

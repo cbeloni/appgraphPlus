@@ -1,5 +1,7 @@
 package com.appgraph.service.impl;
 
+import java.util.List;
+
 import com.appgraph.dao.UsuarioDao;
 import com.appgraph.dao.impl.UsuarioDaoImpl;
 import com.appgraph.model.Usuario;
@@ -15,10 +17,9 @@ public class GestaoUsuarioImpl implements GestaoUsuario {
 		boolean existeUsuario = usuarioDao.existeUsuario(usuario);
 		return 	existeUsuario;
 	}
-
-	public Usuario ObtemUsuario(Usuario usuario) {
+	
+	public Usuario obtemUsuario(Usuario usuario) {
 		Usuario obtemUsuario = usuarioDao.ObtemUsuario(usuario);
 		return obtemUsuario;
-	}
-	
+	}	
 }

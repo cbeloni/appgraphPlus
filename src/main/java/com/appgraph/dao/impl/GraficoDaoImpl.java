@@ -55,6 +55,20 @@ public class GraficoDaoImpl implements GraficoDao {
 		return nomeGraficos;
 	}
 
+	public List<String> obtemNomeGraficos(Usuario usuario) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+
+		@SuppressWarnings("unchecked")
+		List<String> nomeGraficos = (List<String>) session.createCriteria(Grafico.class)
+				.add(Restrictions.eq("uid_usuario", usuario.getUid()))
+				.setProjection(Projections.projectionList().add(Projections.groupProperty("nome_grafico"))).list();
+		tx.commit();
+		session.close();
+
+		return nomeGraficos;
+	}
+	
 	public Grafico porCodigo(Integer codigo) {
 		Session session = HibernateUtil.getSession();
 
@@ -63,5 +77,22 @@ public class GraficoDaoImpl implements GraficoDao {
 		session.close();
 
 		return g;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Grafico> porNome(Usuario usuario, String nomeGrafico) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+
+		List<Grafico> graficos = (List<Grafico>) session.createCriteria(Grafico.class)
+								.add(Restrictions.eq("nome_grafico", nomeGrafico))
+								.add(Restrictions.eq("uid_usuario", usuario.getUid()))
+								.addOrder(Order.asc("id")).list();
+
+		tx.commit();
+		session.close();
+
+		return graficos;
 	}
 }

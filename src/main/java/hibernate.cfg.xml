@@ -11,9 +11,12 @@
 		<property name="hibernate.connection.username">adminQELTTyg</property>
 		<property name="hibernate.connection.password">jRVL-sNSTtcY</property> 		
 		-->
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/appgraph</property>		
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/appgraph</property>		
+	<!--	<property name="hibernate.connection.username">adminKEurZ6F</property>
+		<property name="hibernate.connection.password">l5L6vdR9Ufxw</property>-->
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
+		
 		
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>		
 		<property name="show_sql">true</property>

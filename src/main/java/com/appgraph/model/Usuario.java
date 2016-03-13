@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name="usuario")
 public class Usuario implements Serializable{
@@ -38,6 +40,10 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 
+	public String toJSON(){
+		return new Gson().toJson(this);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

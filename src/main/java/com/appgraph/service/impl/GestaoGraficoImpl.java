@@ -28,6 +28,10 @@ public class GestaoGraficoImpl implements GestaoGrafico {
 		List<String> listaGraficos = graficoDao.obtemNomeGraficos();
 		return listaGraficos;
 	}
+	public List<String> obtemNomeGraficos(Usuario usuario) {
+		List<String> listaGraficos = graficoDao.obtemNomeGraficos(usuario);
+		return listaGraficos;
+	}
 
 	public Grafico porCodigo(Integer codigo) {
 		Grafico grafico = graficoDao.porCodigo(codigo);
@@ -36,6 +40,11 @@ public class GestaoGraficoImpl implements GestaoGrafico {
 
 	public List<Grafico> porNome(Grafico grafico) {
 		List<Grafico> listaGrafico = graficoDao.porNome(grafico);
+		return listaGrafico;
+	}
+	
+	public List<Grafico> porNome(Usuario usuario, String nomeGrafico) {
+		List<Grafico> listaGrafico = graficoDao.porNome(usuario, nomeGrafico);
 		return listaGrafico;
 	}
 

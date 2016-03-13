@@ -1,12 +1,17 @@
 package com.appgraph.view;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import com.appgraph.model.Usuario;
+import com.appgraph.model.UsuarioLogado;
+import com.appgraph.service.GestaoGrafico;
+import com.appgraph.service.GestaoUsuario;
+import com.appgraph.service.impl.GestaoGraficoImpl;
 import com.appgraph.service.impl.GestaoUsuarioImpl;
 import com.appgraph.util.FacesUtil;
 
@@ -25,7 +30,6 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 	private NavigationBean navigationBean;
 	
 	private Usuario usuario = new Usuario();
-	//private List<Usuario> usuarios = new ArrayList<Usuario>();		
 
 	public UsuarioAutenticacaoBean() {
 		this.usuario = new Usuario();
@@ -45,7 +49,7 @@ public class UsuarioAutenticacaoBean extends BaseBean implements Serializable{
 		
 		if (gestaoUsuario.existeUsuario(this.usuario) && !isLogado()) {
 			setLogado(true);
-			this.usuario = gestaoUsuario.ObtemUsuario(this.usuario);				
+			this.usuario = gestaoUsuario.obtemUsuario(this.usuario);				
 			return navigationBean.IrParaConsultaGrafico();
 		} else if (isLogado()) {
 			return navigationBean.IrParaConsultaGrafico();
