@@ -95,4 +95,31 @@ public class GraficoDaoImpl implements GraficoDao {
 
 		return graficos;
 	}
+
+	@Override
+	public Boolean insertGrafico(Grafico grafico) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+
+		session.save(grafico);
+
+		tx.commit();
+		session.close();
+		
+		return true;
+	}
+
+	@Override
+	public List<Grafico> porNome(String nomeGrafico) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		List<Grafico> graficos = (List<Grafico>) session.createCriteria(Grafico.class)
+				.add(Restrictions.eq("nome_grafico", nomeGrafico))
+				.addOrder(Order.asc("id")).list();
+
+		tx.commit();
+		session.close();
+
+		return graficos;
+	}
 }

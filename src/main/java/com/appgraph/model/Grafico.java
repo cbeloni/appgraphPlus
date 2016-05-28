@@ -65,8 +65,8 @@ public class Grafico implements Serializable{
 	
 	public String toJSON(){
 		return new Gson().toJson(this);
-	}
-
+	}		
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

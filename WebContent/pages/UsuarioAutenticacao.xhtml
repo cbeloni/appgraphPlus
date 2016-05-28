@@ -10,20 +10,23 @@
 		<title>Autenticação</title>
 	</h:head>
 	<h:body>
-	
+	<p:separator />
 	<h:form id="frm">
 		<div align="center">
-	        <h:outputLabel for="name" value="Usuario" rendered="#{not usuarioAutenticacaoBean.logado}"/>
-	        <h:inputText id="name" value="#{usuarioAutenticacaoBean.usuario.usuario}" rendered="#{not usuarioAutenticacaoBean.logado}"/>
-
-	        <h:outputLabel for="password" value="Password" rendered="#{not usuarioAutenticacaoBean.logado}"/>
-	        <h:inputSecret id="password" value="#{usuarioAutenticacaoBean.usuario.senha}" redisplay="true"
-	        			   rendered="#{not usuarioAutenticacaoBean.logado}"/>
-
-	        <h:outputLabel value="Logado com: #{usuarioAutenticacaoBean.usuario.usuario}" rendered="#{usuarioAutenticacaoBean.logado}"/>
-
-	        <h:commandButton id="login" value="Login" action="#{usuarioAutenticacaoBean.autenticar}" rendered="#{not usuarioAutenticacaoBean.logado}"/>
-	        <h:commandButton id="logout" value="Logout" action="#{usuarioAutenticacaoBean.sair}" rendered="#{usuarioAutenticacaoBean.logado}"/>
+			<h:panelGrid columns="2" cellpadding="5">
+		        <p:outputLabel for="name" value="Usuario" rendered="#{not usuarioAutenticacaoBean.logado}"/>
+		        <p:inputText id="name" value="#{usuarioAutenticacaoBean.usuario.usuario}" rendered="#{not usuarioAutenticacaoBean.logado}"/>
+				
+				
+		        <p:outputLabel for="password" value="Password" rendered="#{not usuarioAutenticacaoBean.logado}"/>
+		        <p:password id="password" value="#{usuarioAutenticacaoBean.usuario.senha}" redisplay="true"
+		        			   rendered="#{not usuarioAutenticacaoBean.logado}"/>
+				
+		        <p:outputLabel value="Logado com: #{usuarioAutenticacaoBean.usuario.usuario}" rendered="#{usuarioAutenticacaoBean.logado}"/>
+	
+		        <p:commandButton id="login" value="Login" action="#{usuarioAutenticacaoBean.autenticar}" rendered="#{not usuarioAutenticacaoBean.logado}"/>
+		        <p:commandButton id="logout" value="Logout" action="#{usuarioAutenticacaoBean.sair}" rendered="#{usuarioAutenticacaoBean.logado}"/>
+	        </h:panelGrid>
 	    </div>
 		
 	</h:form>

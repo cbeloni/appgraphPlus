@@ -9,7 +9,9 @@ public interface GraficoDao {
 	
 	public List<Grafico> porNome(Grafico grafico);
 	public List<Grafico> porNome(Usuario usuario, String nomeGrafico);
+	public List<Grafico> porNome(String nomeGrafico);
 	public List<String> obtemNomeGraficos();
 	public List<String> obtemNomeGraficos(Usuario usuario);
 	public Grafico porCodigo(Integer codigo);
+	public Boolean insertGrafico(Grafico grafico);
 }

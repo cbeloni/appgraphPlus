@@ -53,4 +53,15 @@ public class Auth {
 		
 	}
 	
+	@POST
+	@Path("/usuario")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response obtem_usuario(String conteudo) {
+		Usuario usuario = (Usuario) new Gson().fromJson(conteudo, Usuario.class);
+		usuario = new UsuarioDaoImpl().ObtemUsuario(usuario);		
+		
+		String output = usuario.toJSON();
+		return Response.status(200).entity(output).build();
+		
+	}
 }

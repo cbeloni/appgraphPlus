@@ -2,32 +2,30 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="conteudo">
 
-		<h1>AppGraph</h1>
-
 		<h:form id="frm2">
-			<h:dataTable var="grafico"
-				value="#{consultaGraficoBean.nomesGraficos}" width="100%"
-				styleClass="grid" headerClass="cabecalho"
-				columnClasses="NomeGrafico">
+			<p:dataTable var="grafico"
+				value="#{consultaGraficoBean.nomesGraficos}" style="width:50%;"
+				styleClass="grid">
 
-				<h:column>
-					<!-- <f:facet name="header">Nome Grafico</f:facet> -->
-
-					<h:commandLink action="#{consultaGraficoBean.abrirGrafico}">
+				<p:column headerText="Gráficos">
+					<p:commandLink action="#{consultaGraficoBean.abrirGrafico}">
 						<h:outputText value="#{grafico}" />
 						<f:setPropertyActionListener
 							target="#{consultaGraficoBean.nomeGraficoSelecionado}"
 							value="#{grafico}" />
-					</h:commandLink>
+					</p:commandLink>
 
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
+
+
 
 </ui:composition>
 
