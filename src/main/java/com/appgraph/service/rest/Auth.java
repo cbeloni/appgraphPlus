@@ -1,8 +1,5 @@
 package com.appgraph.service.rest;
 
-import java.util.Iterator;
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -16,7 +13,6 @@ import com.appgraph.model.Grafico;
 import com.appgraph.model.Usuario;
 import com.appgraph.model.UsuarioLogado;
 import com.appgraph.service.GestaoGrafico;
-import com.appgraph.service.GestaoUsuario;
 import com.appgraph.service.impl.GestaoGraficoImpl;
 import com.google.gson.Gson;
  

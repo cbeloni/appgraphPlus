@@ -42,7 +42,7 @@ public class GraficoBean implements Serializable {
 		ChartSeries serie = new ChartSeries();
 		serie.setLabel(linhasGrafico.get(1).getNome_grafico());
 		for (Grafico lGrafico : linhasGrafico) {
-			serie.set(lGrafico.getSerie().toString(), Integer.parseInt(lGrafico.getEixo_y()));
+			serie.set(lGrafico.getEixo_x().toString(), Integer.parseInt(lGrafico.getEixo_y()));
 			if (max_eixo_y < Integer.parseInt(lGrafico.getEixo_y())) {
 				setMax_eixo_y(Integer.parseInt(lGrafico.getEixo_y()));
 			}

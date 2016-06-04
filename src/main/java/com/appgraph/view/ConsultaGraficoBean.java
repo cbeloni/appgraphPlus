@@ -45,6 +45,10 @@ public class ConsultaGraficoBean implements Serializable {
 	public void inicializar() {
 		this.setNomesGraficos(gg.obtemNomeGraficos());
 	}
+	
+	public void refreshGraficos() {
+		this.setNomesGraficos(gg.obtemNomeGraficos());
+	}
 
 	public List<String> getNomesGraficos() {
 		/*for (String g : nomesGraficos) {

@@ -7,10 +7,11 @@
 
 	<ui:define name="conteudo">
 
-		<h:form id="frm2">
+		<h:form id="frm2">			
 			<p:dataTable var="grafico"
 				value="#{consultaGraficoBean.nomesGraficos}" style="width:50%;"
-				styleClass="grid">
+				styleClass="grid"
+				id="graficoid">
 
 				<p:column headerText="Gráficos">
 					<p:commandLink action="#{consultaGraficoBean.abrirGrafico}">
@@ -22,13 +23,17 @@
 
 				</p:column>
 			</p:dataTable>
+			<h:outputText id="txt_count" value="Reloads: #{contadorBean.number}"/>
+			<p:poll interval="3" listener="#{contadorBean.increment}" update="txt_count" />
+ 			<p:poll interval="60" listener="#{consultaGraficoBean.refreshGraficos}" update="graficoid" />
 		</h:form>
+		
 	</ui:define>
 
 	<ui:define name="grafico">
 		<p:chart type="bar" model="#{graficoBean.barModel}"
 			style="height:300px;width:800px" />
-		<h:button value="Voltar" outcome="ConsultaGrafico" />
+		<h:button value="Refresh" outcome="Grafico"/>
 	</ui:define>
 
 </ui:composition>

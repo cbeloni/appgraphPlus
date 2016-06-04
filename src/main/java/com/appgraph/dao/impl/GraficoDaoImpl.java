@@ -30,7 +30,7 @@ public class GraficoDaoImpl implements GraficoDao {
 		@SuppressWarnings("unchecked")
 		List<Grafico> graficos = (List<Grafico>) session.createCriteria(Grafico.class)
 				.add(Restrictions.eq("nome_grafico", consultaGraficoBean.getNomeGraficoSelecionado()))
-				.add(Restrictions.eq("uid_usuario", usuario.getUid())).addOrder(Order.asc("id")).list();
+				.add(Restrictions.eq("usuario", usuario.getUsuario())).addOrder(Order.asc("id")).list();
 
 		tx.commit();
 		session.close();
@@ -47,7 +47,7 @@ public class GraficoDaoImpl implements GraficoDao {
 
 		@SuppressWarnings("unchecked")
 		List<String> nomeGraficos = (List<String>) session.createCriteria(Grafico.class)
-				.add(Restrictions.eq("uid_usuario", usuario.getUid()))
+				.add(Restrictions.eq("usuario", usuario.getUsuario()))
 				.setProjection(Projections.projectionList().add(Projections.groupProperty("nome_grafico"))).list();
 		tx.commit();
 		session.close();
@@ -61,7 +61,7 @@ public class GraficoDaoImpl implements GraficoDao {
 
 		@SuppressWarnings("unchecked")
 		List<String> nomeGraficos = (List<String>) session.createCriteria(Grafico.class)
-				.add(Restrictions.eq("uid_usuario", usuario.getUid()))
+				.add(Restrictions.eq("usuario", usuario.getUsuario()))
 				.setProjection(Projections.projectionList().add(Projections.groupProperty("nome_grafico"))).list();
 		tx.commit();
 		session.close();
@@ -87,7 +87,7 @@ public class GraficoDaoImpl implements GraficoDao {
 
 		List<Grafico> graficos = (List<Grafico>) session.createCriteria(Grafico.class)
 								.add(Restrictions.eq("nome_grafico", nomeGrafico))
-								.add(Restrictions.eq("uid_usuario", usuario.getUid()))
+								.add(Restrictions.eq("usuario", usuario.getUsuario()))
 								.addOrder(Order.asc("id")).list();
 
 		tx.commit();

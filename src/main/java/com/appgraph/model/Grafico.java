@@ -18,11 +18,10 @@ public class Grafico implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private Integer uid_usuario;
+	private String usuario;
 	private String nome_grafico;
 	private String eixo_y;
-	private Integer id_serie;
-	private String serie;
+	private String eixo_x;
 	
 	@Id
 	@GeneratedValue
@@ -32,11 +31,11 @@ public class Grafico implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getUid_usuario() {
-		return uid_usuario;
+	public String getUsuario() {
+		return usuario;
 	}
-	public void setUid_usuario(Integer uid_usuario) {
-		this.uid_usuario = uid_usuario;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	public String getNome_grafico() {
 		return nome_grafico;
@@ -50,17 +49,12 @@ public class Grafico implements Serializable{
 	public void setEixo_y(String eixo_y) {
 		this.eixo_y = eixo_y;
 	}
-	public Integer getId_serie() {
-		return id_serie;
+
+	public String getEixo_x() {
+		return eixo_x;
 	}
-	public void setId_serie(Integer id_serie) {
-		this.id_serie = id_serie;
-	}
-	public String getSerie() {
-		return serie;
-	}
-	public void setSerie(String serie) {
-		this.serie = serie;
+	public void setEixo_x(String eixo_x) {
+		this.eixo_x = eixo_x;
 	}
 	
 	public String toJSON(){
