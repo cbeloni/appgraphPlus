@@ -108,6 +108,34 @@ public class GraficoDaoImpl implements GraficoDao {
 		
 		return true;
 	}
+	
+	public boolean insertGraficos(List<Grafico> graficos) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		for (Grafico grafico : graficos) {
+			session.save(grafico);
+		}		
+
+		tx.commit();
+		session.close();
+		
+		return true;
+	}
+	
+	public boolean removeGraficos(List<Grafico> graficos) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		for (Grafico grafico : graficos) {
+			session.delete(grafico);
+		}		
+
+		tx.commit();
+		session.close();
+		
+		return true;
+	}
 
 	@Override
 	public List<Grafico> porNome(String nomeGrafico) {

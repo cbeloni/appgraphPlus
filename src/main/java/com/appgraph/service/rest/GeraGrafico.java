@@ -1,5 +1,8 @@
 package com.appgraph.service.rest;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +16,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.jasper.tagplugins.jstl.core.Remove;
+
 import com.appgraph.dao.impl.GraficoDaoImpl;
 import com.appgraph.model.Grafico;
+import com.appgraph.model.Graficos;
 import com.appgraph.service.GestaoGrafico;
+import com.appgraph.service.impl.GestaoGraficoImpl;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.inject.Inject;
 
 @Path("/graficos")
@@ -25,7 +33,7 @@ public class GeraGrafico {
 	@Inject
 	private GestaoGrafico gestaoGrafico;
 	
-	@Path("/id/{nome}")
+	@Path("/{nome}")
 	@GET	
 	@Produces(MediaType.APPLICATION_JSON)
 	public String buscaGrafico(@PathParam("nome") String nome){
@@ -43,11 +51,25 @@ public class GeraGrafico {
 	}
 	
 	@PUT
-	@Produces(MediaType.APPLICATION_XML)
-	public Response gerarGrafico(Grafico grafico, @Context HttpServletRequest ctx) {
-		gestaoGrafico.porNome(grafico);
-		return null;
-		
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response gerarGrafico(String conteudo, @Context HttpServletRequest ctx) throws IOException {
+		if (!new Autenticar().Autenticar(ctx)) {	
+			conteudo = "Usuario não existe";
+			return Response.status(401).entity(conteudo).build();
+		}
+		System.out.println("Entrar no Try");
+		try {
+			Type listType = new TypeToken<ArrayList<Grafico>>(){}.getType();
+			List<Grafico> graficos = new Gson().fromJson(conteudo, listType);
+			GestaoGraficoImpl gg = new GestaoGraficoImpl();
+			gg.removeGraficos(graficos);
+			gg.insertGraficos(graficos);
+		} catch (Exception e) {
+			System.out.println("Exception: " + e);
+		}
+
+		System.out.println("JSON:" + conteudo);		
+		return Response.status(200).entity(conteudo).build();		
 	}
 	
 	@POST
@@ -58,7 +80,7 @@ public class GeraGrafico {
 				
 		
 		String output = grafico.toJSON();
-		return Response.status(200).entity(output).build();
+		return Response.status(200).build();
 		
 	}
 }

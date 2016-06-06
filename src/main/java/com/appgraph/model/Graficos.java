@@ -12,8 +12,12 @@ public class Graficos {
 		this.graficos = grafico;
 	}	
 
-	public List<Grafico> getGrafico() {
+	public List<Grafico> getGraficos() {
 		return graficos;
+	}
+	
+	public Grafico getPrimeiroGrafico() {
+		return this.graficos.get(0);
 	}
 
 	public void setGrafico(List<Grafico> grafico) {

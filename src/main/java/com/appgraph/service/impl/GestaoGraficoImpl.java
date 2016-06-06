@@ -22,8 +22,7 @@ import com.google.inject.Inject;
 
 public class GestaoGraficoImpl implements GestaoGrafico {
 
-	//@Inject
-	GraficoDao graficoDao = new GraficoDaoImpl();
+	GraficoDaoImpl graficoDao = new GraficoDaoImpl();
 	
 	public List<String> obtemNomeGraficos() {
 		List<String> listaGraficos = graficoDao.obtemNomeGraficos();
@@ -49,4 +48,11 @@ public class GestaoGraficoImpl implements GestaoGrafico {
 		return listaGrafico;
 	}
 
+	public boolean insertGraficos(List<Grafico> graficos) {		
+		return graficoDao.insertGraficos(graficos);
+	}
+	
+	public boolean removeGraficos(List<Grafico> graficos) {		
+		return graficoDao.removeGraficos(graficos);
+	}
 }
